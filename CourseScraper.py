@@ -1,13 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 import time
-import random
 import string
+import random
 
 def get_random_string(length):
+    # choose from all lowercase letter
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
+    print("Random string of length", length, "is:", result_str)
 
 start_time = time.time()
 
@@ -75,58 +76,51 @@ data = [
 
 response = requests.post('https://banweb.ucr.edu/banprod/bwckschd.p_get_crse_unsec', cookies=cookies, headers=headers, data=data)
 
-
 soup = BeautifulSoup(response.content, "html.parser")
 
-
 f = open("demo.csv", "w")
-f.write("course_name, course_crn, course_id, course_section, course_type, course_time, course_days, course_location, course_dates, course_type2, course_professor,")
-
-c = 0
-v=[]
+f.write("course_name,course_crn,course_id,course_section,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor")
 
 for rows in soup.find_all('tr'):
     for title in rows.find_all('th'):
         for link in title.find_all('a'):
-            f.write('\n'+link.text.split('-')[0].strip()+', ')
-            print('\n'+ link.text.split('-')[0].strip())
+            f.write('\n'+link.text.split('-')[0].replace(',',"").strip()+',')
+            print('\n'+ link.text.split('-')[0].replace(',',"").strip())
 
-            f.write(link.text.split('-')[1].strip()+', ')
+            f.write(link.text.split('-')[1].strip()+',')
             print(link.text.split('-')[1].strip())
 
-            f.write(link.text.split('-')[2].strip()+', ')
+            f.write(link.text.split('-')[2].strip()+',')
             print(link.text.split('-')[2].strip())
 
-            f.write(link.text.split('-')[3].strip()+', ')
+            f.write(link.text.split('-')[3].strip())
             print(link.text.split('-')[3].strip())
     for data in rows.find_all('td'):
         for table in data.find_all('table'):
             for row in table.find_all('tr'):
                 for d in row.find_all('td'):
-                    # print(d.text.replace(',',"").split())
+                    f.write(",")
                     for z in range(len(d.text.replace(',',"").split())):
                         if d.text.replace(',',"").split() != []:
                             f.write(d.text.replace(',',"").split()[z])
                             print(d.text.replace(',',"").split()[z])
                             if z != len(d.text.replace(',',"").split())-1:
                                 f.write(" ")
-                    f.write(", ")
-                    # for a in d.text.replace(',',"").split():
-                    #     print(a)
+
+f.close()
+
+file = open('demo.csv', 'r')
+newFile = open('newFile.csv', 'w')
+Lines = file.readlines()
+
+for line in Lines:
+    newFile.write(line.replace(', ,', ", TBA,").replace('Online ONLINE', "Online"))
+
+file.close()
+newFile.close()
 
 end_time = time.time()
 
 t_time = end_time - start_time
-
-f.close()
-
-newf=""
-with open('demo.csv','r') as f:
-    for line in f:
-        newf+=line.strip()+" "+get_random_string(6)+"\n"
-    f.close()
-with open('demo.csv','w') as f:
-    f.write(newf)
-    f.close()
 
 print('\n' + "Total time scraping and writing data: " + str(t_time) + " seconds")
