@@ -4,12 +4,6 @@ import time
 import string
 import random
 
-def get_random_string(length):
-    # choose from all lowercase letter
-    letters = string.ascii_lowercase
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    print("Random string of length", length, "is:", result_str)
-
 start_time = time.time()
 
 cookies = {
@@ -74,12 +68,39 @@ data = [
     ('end_ap', 'a'),
 ]
 
+def scrape(link):
+    res = requests.get(link)
+    s = BeautifulSoup(res.content, "html.parser")
+    bool = False
+    secBool = False
+    z = 1
+    for i in s.stripped_strings:
+        if (i.strip() == 'Return to Previous'):
+            return
+        if(bool):
+            if('Minimum Grade of' in i):
+                secBool = False
+            if(secBool):
+                print(i.strip())
+                if(z%2==0):
+                    f.write("-")
+                    f.write(i)
+                    f.write("/")
+                    z = z + 1
+                else:
+                    f.write(i)
+                    z = z + 1
+            if(i.strip() == 'Course or Test:'):
+                secBool = True
+        if (i.strip() == 'General Requirements:'):
+            bool = True
+
 response = requests.post('https://banweb.ucr.edu/banprod/bwckschd.p_get_crse_unsec', cookies=cookies, headers=headers, data=data)
 
 soup = BeautifulSoup(response.content, "html.parser")
 
 f = open("demo.csv", "w")
-f.write("course_name,course_crn,course_id,course_section,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor")
+f.write("course_name,course_crn,course_id,course_section,prereqs,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor")
 
 for rows in soup.find_all('tr'):
     for title in rows.find_all('th'):
@@ -95,6 +116,9 @@ for rows in soup.find_all('tr'):
 
             f.write(link.text.split('-')[3].strip())
             print(link.text.split('-')[3].strip())
+            l = 'https://banweb.ucr.edu' + link['href']
+            f.write(",")
+            scrape(l)
     for data in rows.find_all('td'):
         for table in data.find_all('table'):
             for row in table.find_all('tr'):
