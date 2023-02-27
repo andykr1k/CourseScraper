@@ -2,7 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import string
-import random
+import csv
+import json
+
+print("Starting scraping and writing data!")
 
 start_time = time.time()
 
@@ -81,9 +84,9 @@ def scrape(link):
             if('Minimum Grade of' in i):
                 secBool = False
             if(secBool):
-                print(i.strip())
+                # print(i.strip())
                 if(z%2==0):
-                    f.write("-")
+                    f.write(" ")
                     f.write(i)
                     f.write("/")
                     z = z + 1
@@ -98,24 +101,25 @@ def scrape(link):
 response = requests.post('https://banweb.ucr.edu/banprod/bwckschd.p_get_crse_unsec', cookies=cookies, headers=headers, data=data)
 
 soup = BeautifulSoup(response.content, "html.parser")
+print("Response Posted!")
 
 f = open("demo.csv", "w")
-f.write("course_name,course_crn,course_id,course_section,prereqs,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor")
+f.write("course_name,course_crn,course_id,course_section,course_pre,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor")
 
 for rows in soup.find_all('tr'):
     for title in rows.find_all('th'):
         for link in title.find_all('a'):
             f.write('\n'+link.text.split('-')[0].replace(',',"").strip()+',')
-            print('\n'+ link.text.split('-')[0].replace(',',"").strip())
+            # print('\n'+ link.text.split('-')[0].replace(',',"").strip())
 
             f.write(link.text.split('-')[1].strip()+',')
-            print(link.text.split('-')[1].strip())
+            # print(link.text.split('-')[1].strip())
 
             f.write(link.text.split('-')[2].strip()+',')
-            print(link.text.split('-')[2].strip())
+            # print(link.text.split('-')[2].strip())
 
             f.write(link.text.split('-')[3].strip())
-            print(link.text.split('-')[3].strip())
+            # print(link.text.split('-')[3].strip())
             l = 'https://banweb.ucr.edu' + link['href']
             f.write(",")
             scrape(l)
@@ -127,11 +131,13 @@ for rows in soup.find_all('tr'):
                     for z in range(len(d.text.replace(',',"").split())):
                         if d.text.replace(',',"").split() != []:
                             f.write(d.text.replace(',',"").split()[z])
-                            print(d.text.replace(',',"").split()[z])
+                            # print(d.text.replace(',',"").split()[z])
                             if z != len(d.text.replace(',',"").split())-1:
                                 f.write(" ")
 
 f.close()
+
+print("Fixing Demo.csv!")
 
 file = open('demo.csv', 'r')
 newFile = open('newFile.csv', 'w')
@@ -143,8 +149,29 @@ for line in Lines:
 file.close()
 newFile.close()
 
+print("Converting newFile.csv to ANTH.json!")
+
+def csv_to_json(csvFilePath, jsonFilePath):
+    jsonArray = []
+      
+    with open(csvFilePath, encoding='utf-8') as csvf: 
+        csvReader = csv.DictReader(csvf) 
+
+        for row in csvReader: 
+            jsonArray.append(row)
+  
+    with open(jsonFilePath, 'w', encoding='utf-8') as jsonf: 
+        jsonString = json.dumps(jsonArray, indent=4)
+        jsonf.write(jsonString)
+          
+csvFilePath = r'newFile.csv'
+jsonFilePath = r'ANTH.json'
+csv_to_json(csvFilePath, jsonFilePath)
+
 end_time = time.time()
 
 t_time = end_time - start_time
 
 print('\n' + "Total time scraping and writing data: " + str(t_time) + " seconds")
+
+print("Scrape Completed!")

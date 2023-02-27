@@ -1,4 +1,4 @@
-course_name,course_crn,course_id,course_section,prereqs,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor
+course_name,course_crn,course_id,course_section,course_pre,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor
 CULTURAL ANTHROPOLOGY,50107,ANTH 001,001,,Lecture,11:00 am - 12:20 pm,MW,Online,Apr 03 2023 - Jun 09 2023,Lecture,Worku Nida (P)
 CULTURAL ANTHROPOLOGY,50108,ANTH 001,011,,Discussion,8:00 am - 8:50 am,T,Online,Apr 03 2023 - Jun 09 2023,Discussion,TBA
 CULTURAL ANTHROPOLOGY,50109,ANTH 001,012,,Discussion,9:00 am - 9:50 am,T,Online,Apr 03 2023 - Jun 09 2023,Discussion,TBA
@@ -45,19 +45,19 @@ INTRODUCTION TO LINGUISTIC ANTHROPOLOGY,66017,ANTH 007S,001,,Lecture,11:00 am - 
 INTRODUCTION TO LINGUISTIC ANTHROPOLOGY,68208,ANTH 007S,021,,Discussion,3:00 pm - 3:50 pm,T,Dundee A1109,Apr 03 2023 - Jun 09 2023,Discussion,TBA
 INTRODUCTION TO LINGUISTIC ANTHROPOLOGY,68209,ANTH 007S,022,,Discussion,1:00 pm - 1:50 pm,T,Sproul Hall 2365,Apr 03 2023 - Jun 09 2023,Discussion,TBA
 INTRODUCTION TO LINGUISTIC ANTHROPOLOGY,68210,ANTH 007S,023,,Discussion,5:00 pm - 5:50 pm,T,Olmsted 420,Apr 03 2023 - Jun 09 2023,Discussion,TBA
-INTRO TO VISUAL ANTHROPOLOGY,71892,ANTH 103S,001,ANTH-001/ANTH-001H/ANTH-001W/,Lecture,5:00 pm - 6:20 pm,MW,Gordon Watkins Hall 1101,Apr 03 2023 - Jun 09 2023,Lecture,Christina Lyn Schwenkel (P)
-INTRO TO VISUAL ANTHROPOLOGY,72169,ANTH 103S,021,ANTH-001/ANTH-001H/ANTH-001W/,Discussion,11:00 am - 11:50 am,F,Sproul Hall 2356,Apr 03 2023 - Jun 09 2023,Discussion,TBA
-INTRO TO VISUAL ANTHROPOLOGY,72170,ANTH 103S,022,ANTH-001/ANTH-001H/ANTH-001W/,Discussion,12:00 pm - 12:50 pm,F,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Discussion,TBA
-INTRO TO VISUAL ANTHROPOLOGY,72171,ANTH 103S,023,ANTH-001/ANTH-001H/ANTH-001W/,Discussion,2:00 pm - 2:50 pm,F,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Discussion,TBA
-ARCHAEOLOGY OF EASTERN MESOAMERICA,71895,ANTH 115R,001,ANTH-003/ANTH-005/,Lecture,10:00 am - 10:50 am,MWF,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Lecture,Travis William Stanton (P)
-LANGUAGE AND CULTURE,70714,ANTH 120,001,ANTH-001/ANTH-001H/ANTH-001W/LING-020/ANTH-007/ANTH-007S/,Lecture,2:00 pm - 4:50 pm,F,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Hye Jin Nah (P)
-LANGUAGE AND CULTURE,70715,ANTH 120,021,ANTH-001/ANTH-001H/ANTH-001W/LING-020/ANTH-007/ANTH-007S/,Consultation,TBA,,To Be Announced TBA,Apr 03 2023 - Jun 09 2023,Consultation,Hye Jin Nah (P)
+INTRO TO VISUAL ANTHROPOLOGY,71892,ANTH 103S,001,ANTH 001/ANTH 001H/ANTH 001W/,Lecture,5:00 pm - 6:20 pm,MW,Gordon Watkins Hall 1101,Apr 03 2023 - Jun 09 2023,Lecture,Christina Lyn Schwenkel (P)
+INTRO TO VISUAL ANTHROPOLOGY,72169,ANTH 103S,021,ANTH 001/ANTH 001H/ANTH 001W/,Discussion,11:00 am - 11:50 am,F,Sproul Hall 2356,Apr 03 2023 - Jun 09 2023,Discussion,TBA
+INTRO TO VISUAL ANTHROPOLOGY,72170,ANTH 103S,022,ANTH 001/ANTH 001H/ANTH 001W/,Discussion,12:00 pm - 12:50 pm,F,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Discussion,TBA
+INTRO TO VISUAL ANTHROPOLOGY,72171,ANTH 103S,023,ANTH 001/ANTH 001H/ANTH 001W/,Discussion,2:00 pm - 2:50 pm,F,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Discussion,TBA
+ARCHAEOLOGY OF EASTERN MESOAMERICA,71895,ANTH 115R,001,ANTH 003/ANTH 005/,Lecture,10:00 am - 10:50 am,MWF,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Lecture,Travis William Stanton (P)
+LANGUAGE AND CULTURE,70714,ANTH 120,001,ANTH 001/ANTH 001H/ANTH 001W/LING 020/ANTH 007/ANTH 007S/,Lecture,2:00 pm - 4:50 pm,F,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Hye Jin Nah (P)
+LANGUAGE AND CULTURE,70715,ANTH 120,021,ANTH 001/ANTH 001H/ANTH 001W/LING 020/ANTH 007/ANTH 007S/,Consultation,TBA,,To Be Announced TBA,Apr 03 2023 - Jun 09 2023,Consultation,Hye Jin Nah (P)
 ETHNOLOGY GREATER SOUTHWEST,72172,ANTH 140E,001,,Lecture,12:30 pm - 1:50 pm,TR,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Karl A. Taube (P)
-BLK BUS CULTURES & IDENTITIES,72175,ANTH 142F,001,ANTH-001/ANTH-001H/ANTH-001W/,Lecture,2:00 pm - 3:20 pm,MW,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Worku Nida (P)
+BLK BUS CULTURES & IDENTITIES,72175,ANTH 142F,001,ANTH 001/ANTH 001H/ANTH 001W/,Lecture,2:00 pm - 3:20 pm,MW,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Worku Nida (P)
 GENDER RACE AND MEDICINE,71893,ANTH 144F,001,,Lecture,5:00 pm - 6:20 pm,MW,Sproul Hall 2343,Apr 03 2023 - Jun 09 2023,Lecture,Isabelle Marie Placentia (P)
-SEXUALITIES AND CULTURE,72272,ANTH 145,001,GSST-001/GSST-001H/GSST-001S/,Lecture,11:00 am - 12:20 pm,MW,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Lecture,Sherine Hafez (P)
-EVOLUTION OF THE GENUS HOMO,69959,ANTH 153,001,ANTH-002/,Lecture,8:00 am - 9:20 am,MW,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Maureen Louise Hickey (P)
-METHODS IN CULTURAL ANTHROPOLOGY,72176,ANTH 165G,001,ANTH-001/,Lecture,2:00 pm - 3:20 pm,TR,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Derick Alden Fay (P)
+SEXUALITIES AND CULTURE,72272,ANTH 145,001,GSST 001/GSST 001H/GSST 001S/,Lecture,11:00 am - 12:20 pm,MW,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Lecture,Sherine Hafez (P)
+EVOLUTION OF THE GENUS HOMO,69959,ANTH 153,001,ANTH 002/,Lecture,8:00 am - 9:20 am,MW,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Maureen Louise Hickey (P)
+METHODS IN CULTURAL ANTHROPOLOGY,72176,ANTH 165G,001,ANTH 001/,Lecture,2:00 pm - 3:20 pm,TR,Gordon Watkins Hall 1350,Apr 03 2023 - Jun 09 2023,Lecture,Derick Alden Fay (P)
 MUSIC CULTURES OF SOUTHEAST ASIA,72291,ANTH 176,001,,Lecture,3:30 pm - 4:50 pm,MW,Art Building 157,Apr 03 2023 - Jun 09 2023,Lecture,Deborah Wong (P)
 GENDER AND POWER IN MUSLIM SOCIETIES,71357,ANTH 189,001,,Lecture,12:30 pm - 1:50 pm,MW,Gordon Watkins Hall 1111,Apr 03 2023 - Jun 09 2023,Lecture,Sherine Hafez (P)
 SPECIAL STUDIES,50165,ANTH 190,13N,,Tutorial,TBA,,TBA,Apr 03 2023 - Jun 09 2023,Tutorial,Sally Ann Ness (P)
@@ -89,7 +89,7 @@ INTERNSHIP IN ANTHROPOLOGY,71112,ANTH 198I,S73,,Tutorial,TBA,,TBA,Apr 03 2023 - 
 SENIOR HONORS RESEARCH,50212,ANTH 199H,13N,,Research,TBA,,TBA,Apr 03 2023 - Jun 09 2023,Research,Sally Ann Ness (P)
 SENIOR HONORS RESEARCH,50216,ANTH 199H,60L,,Research,TBA,,TBA,Apr 03 2023 - Jun 09 2023,Research,Sang-Hee Lee (P)
 SENIOR HONORS RESEARCH,50210,ANTH 199H,M07,,Research,TBA,,TBA,Apr 03 2023 - Jun 09 2023,Research,Yolanda T. Moses (P)
-CORE THEORY IN ANTHROPOLOGY,70767,ANTH 200C,001,ANTH-200B/,Seminar,9:00 am - 11:50 am,R,Gordon Watkins Hall 1347,Apr 03 2023 - Jun 09 2023,Seminar,Derick Alden Fay (P)
+CORE THEORY IN ANTHROPOLOGY,70767,ANTH 200C,001,ANTH 200B/,Seminar,9:00 am - 11:50 am,R,Gordon Watkins Hall 1347,Apr 03 2023 - Jun 09 2023,Seminar,Derick Alden Fay (P)
 PROFESSIONALISM IN ANTHROPOLOGY,72639,ANTH 210B,001,,Seminar,12:00 pm - 2:50 pm,R,Gordon Watkins Hall 1347,Apr 03 2023 - Jun 09 2023,Seminar,Joao Vargas (P)
 MATTER AND MATERIALITY,72178,ANTH 217,001,,Seminar,12:00 pm - 2:50 pm,M,Gordon Watkins Hall 1347,Apr 03 2023 - Jun 09 2023,Seminar,Nawa Sugiyama (P)
 MATTER AND MATERIALITY,72179,ANTH 217,002,,Seminar,12:00 pm - 2:50 pm,M,Gordon Watkins Hall 1347,Apr 03 2023 - Jun 09 2023,Seminar,Christina Lyn Schwenkel (P)
