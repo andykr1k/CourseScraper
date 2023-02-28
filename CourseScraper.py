@@ -104,7 +104,7 @@ soup = BeautifulSoup(response.content, "html.parser")
 print("Response Posted!")
 
 f = open("demo.csv", "w")
-f.write("course_name,course_crn,course_id,course_section,course_pre,course_type, course_time,course_days,course_location,course_dates,course_type2,course_professor")
+f.write("course_name,course_crn,course_id,course_section,course_pre,course_type,course_time,course_days,course_location,course_dates,course_type2,course_professor")
 
 for rows in soup.find_all('tr'):
     for title in rows.find_all('th'):
