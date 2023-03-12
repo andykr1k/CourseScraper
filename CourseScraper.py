@@ -9,6 +9,8 @@ print("Starting scraping and writing data!")
 
 start_time = time.time()
 
+l = ['ANTH','ARBC','ART','AHS','AST','BSWT','BCH','BIEN','BIOL','BMSC','BPHY','BPSC','BUS','CHFY','CAH','CBNS','CMDB','CHE','CEE','CHEM','CHN','CLA','CPAC','CPLT','CS','CRWT','CWPA','DNCE','ECON','EDUC','EE','ENGR','ENGL','ENTM','ENVE','ENSC','ENTX','ETST','EUR','EEOB','FIL','FREN','GSST','GEN','GEO','GER','GBST','GDIV','GRK','HIST','HISE','HISA','HNPG','HASS','ITAL','JPN','KOR','LABR','LATN','LNST','LGBS','LBST','LING','CWLR','MGT','MSE','MATH','ME','MCS','MHHS','MCBL','MEIS','MUS','NASC','NEM','NRSC','PCST','PHIL','PHYS','PLPA','POSC','PSYC','PBPL','RLST','RUSN','MDCL','SOC','SEAS','SPN','STAT','TFDP','URST','VNM']
+
 cookies = {
     'TESTID': 'set',
     'nmstat': '7d06244e-cf5c-7b83-a18d-a6b8276031ce',
@@ -41,36 +43,6 @@ headers = {
     'sec-ch-ua-platform': '"macOS"',
 }
 
-data = [
-    ('term_in', '202320'),
-    ('sel_subj', 'dummy'),
-    ('sel_day', 'dummy'),
-    ('sel_schd', 'dummy'),
-    ('sel_insm', 'dummy'),
-    ('sel_camp', 'dummy'),
-    ('sel_levl', 'dummy'),
-    ('sel_sess', 'dummy'),
-    ('sel_instr', 'dummy'),
-    ('sel_ptrm', 'dummy'),
-    ('sel_attr', 'dummy'),
-    ('sel_subj', 'ANTH'),
-    ('sel_crse', ''),
-    ('sel_title', ''),
-    ('sel_schd', '%'),
-    ('sel_insm', '%'),
-    ('sel_from_cred', ''),
-    ('sel_to_cred', ''),
-    ('sel_levl', '%'),
-    ('sel_instr', '%'),
-    ('sel_attr', '%'),
-    ('begin_hh', '0'),
-    ('begin_mi', '0'),
-    ('begin_ap', 'a'),
-    ('end_hh', '0'),
-    ('end_mi', '0'),
-    ('end_ap', 'a'),
-]
-
 def scrape(link):
     res = requests.get(link)
     s = BeautifulSoup(res.content, "html.parser")
@@ -98,42 +70,76 @@ def scrape(link):
         if (i.strip() == 'General Requirements:'):
             bool = True
 
-response = requests.post('https://banweb.ucr.edu/banprod/bwckschd.p_get_crse_unsec', cookies=cookies, headers=headers, data=data)
-
-soup = BeautifulSoup(response.content, "html.parser")
-print("Response Posted!")
-
 f = open("demo.csv", "w")
 f.write("course_name,course_crn,course_id,course_section,course_pre,course_type,course_time,course_days,course_location,course_dates,course_type2,course_professor")
 
-for rows in soup.find_all('tr'):
-    for title in rows.find_all('th'):
-        for link in title.find_all('a'):
-            f.write('\n'+link.text.split('-')[0].replace(',',"").strip()+',')
-            # print('\n'+ link.text.split('-')[0].replace(',',"").strip())
+for subject in l:
+    data = [
+    ('term_in', '202320'),
+    ('sel_subj', 'dummy'),
+    ('sel_day', 'dummy'),
+    ('sel_schd', 'dummy'),
+    ('sel_insm', 'dummy'),
+    ('sel_camp', 'dummy'),
+    ('sel_levl', 'dummy'),
+    ('sel_sess', 'dummy'),
+    ('sel_instr', 'dummy'),
+    ('sel_ptrm', 'dummy'),
+    ('sel_attr', 'dummy'),
+    ('sel_subj', subject),
+    ('sel_crse', ''),
+    ('sel_title', ''),
+    ('sel_schd', '%'),
+    ('sel_insm', '%'),
+    ('sel_from_cred', ''),
+    ('sel_to_cred', ''),
+    ('sel_levl', '%'),
+    ('sel_instr', '%'),
+    ('sel_attr', '%'),
+    ('begin_hh', '0'),
+    ('begin_mi', '0'),
+    ('begin_ap', 'a'),
+    ('end_hh', '0'),
+    ('end_mi', '0'),
+    ('end_ap', 'a'),
+    ]
 
-            f.write(link.text.split('-')[1].strip()+',')
-            # print(link.text.split('-')[1].strip())
+    print('Scraping ' + subject + '!')
 
-            f.write(link.text.split('-')[2].strip()+',')
-            # print(link.text.split('-')[2].strip())
+    response = requests.post('https://banweb.ucr.edu/banprod/bwckschd.p_get_crse_unsec', cookies=cookies, headers=headers, data=data)
 
-            f.write(link.text.split('-')[3].strip())
-            # print(link.text.split('-')[3].strip())
-            l = 'https://banweb.ucr.edu' + link['href']
-            f.write(",")
-            scrape(l)
-    for data in rows.find_all('td'):
-        for table in data.find_all('table'):
-            for row in table.find_all('tr'):
-                for d in row.find_all('td'):
-                    f.write(",")
-                    for z in range(len(d.text.replace(',',"").split())):
-                        if d.text.replace(',',"").split() != []:
-                            f.write(d.text.replace(',',"").split()[z])
-                            # print(d.text.replace(',',"").split()[z])
-                            if z != len(d.text.replace(',',"").split())-1:
-                                f.write(" ")
+    soup = BeautifulSoup(response.content, "html.parser")
+    print("Response Posted For "+ subject +"!")
+
+    for rows in soup.find_all('tr'):
+        for title in rows.find_all('th'):
+            for link in title.find_all('a'):
+                f.write('\n'+link.text.split('-')[0].replace(',',"").strip()+',')
+                # print('\n'+ link.text.split('-')[0].replace(',',"").strip())
+
+                f.write(link.text.split('-')[1].strip()+',')
+                # print(link.text.split('-')[1].strip())
+
+                f.write(link.text.split('-')[2].strip()+',')
+                # print(link.text.split('-')[2].strip())
+
+                f.write(link.text.split('-')[3].strip())
+                # print(link.text.split('-')[3].strip())
+                l = 'https://banweb.ucr.edu' + link['href']
+                f.write(",")
+                scrape(l)
+        for data in rows.find_all('td'):
+            for table in data.find_all('table'):
+                for row in table.find_all('tr'):
+                    for d in row.find_all('td'):
+                        f.write(",")
+                        for z in range(len(d.text.replace(',',"").split())):
+                            if d.text.replace(',',"").split() != []:
+                                f.write(d.text.replace(',',"").split()[z])
+                                # print(d.text.replace(',',"").split()[z])
+                                if z != len(d.text.replace(',',"").split())-1:
+                                    f.write(" ")
+
 
 f.close()
 
@@ -149,7 +155,7 @@ for line in Lines:
 file.close()
 newFile.close()
 
-print("Converting newFile.csv to ANTH.json!")
+print("Converting newFile.csv to Courses.json!")
 
 def csv_to_json(csvFilePath, jsonFilePath):
     jsonArray = []
@@ -165,7 +171,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
         jsonf.write(jsonString)
           
 csvFilePath = r'newFile.csv'
-jsonFilePath = r'ANTH.json'
+jsonFilePath = r'Courses.json'
 csv_to_json(csvFilePath, jsonFilePath)
 
 end_time = time.time()
